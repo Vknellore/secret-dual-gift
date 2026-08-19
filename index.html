@@ -21,7 +21,6 @@
     color: #4a2c3a;
   }
 
-  /* Password Screen */
   #password-screen {
     min-height: 100vh;
     display: flex;
@@ -132,7 +131,6 @@
     opacity: 1;
   }
 
-  /* Gift Screens */
   .gift-screen {
     display: none;
     min-height: 100vh;
@@ -322,14 +320,6 @@
     display: none;
   }
 
-  .gift-screen.active ~ .back-btn,
-  .gift-screen.active + .back-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Floating hearts animation */
   .floating-hearts {
     position: fixed;
     top: 0;
@@ -358,10 +348,8 @@
 </head>
 <body>
 
-  <!-- Floating background hearts -->
   <div class="floating-hearts" id="hearts"></div>
 
-  <!-- PASSWORD SCREEN -->
   <div id="password-screen">
     <div class="heart-bg" style="top:10%;left:10%;">💗</div>
     <div class="heart-bg" style="top:20%;right:15%;animation-delay:1s;">💕</div>
@@ -398,22 +386,17 @@
     <div class="card">
       <h3>📸 Memories</h3>
       <div class="photos">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=400&fit=crop" alt="Aesthetic night"></div>
-        <div class="photo"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=400&fit=crop" alt="Soft landscape"></div>
-        <div class="photo"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&h=400&fit=crop" alt="Dreamy nature"></div>
-        <div class="photo"><img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=400&fit=crop" alt="Stars aesthetic"></div>
+        <div class="photo"><img src="boy1.jpg" alt="Photo 1"></div>
+        <div class="photo"><img src="boy2.png" alt="Photo 2"></div>
+        <div class="photo"><img src="boy3.png" alt="Photo 3"></div>
+        <div class="photo"><img src="boy4.png" alt="Photo 4"></div>
       </div>
     </div>
 
     <div class="card">
       <h3>🎵 Our Song</h3>
-      <div class="music-player">
-        <button class="play-btn" onclick="toggleMusic('bro')">▶</button>
-        <div class="song-info">
-          <div class="song-title">Your Special Track</div>
-          <div class="song-artist">Add YouTube / Spotify link later</div>
-        </div>
-      </div>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3GCdLUSnKSMJhs4Tj6CV3s?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <p style="text-align:center;margin-top:8px;font-size:0.85rem;color:#8a5a6e;">All The Stars – Kendrick Lamar & SZA</p>
     </div>
 
     <div class="card">
@@ -487,7 +470,6 @@
   <button class="back-btn" id="backBtn" onclick="goBack()" style="display:none;">←</button>
 
 <script>
-  // Create floating hearts
   const heartsContainer = document.getElementById('hearts');
   const heartEmojis = ['💗', '💕', '💖', '🩷', '💓'];
   for (let i = 0; i < 15; i++) {
@@ -516,14 +498,12 @@
     errorMsg.classList.remove('show');
 
     if (val === '1432') {
-      // Bro version
       passwordScreen.style.display = 'none';
       broScreen.classList.add('active');
       sisScreen.classList.remove('active');
       backBtn.style.display = 'flex';
       passInput.value = '';
     } else if (val === '1433') {
-      // Sis version
       passwordScreen.style.display = 'none';
       sisScreen.classList.add('active');
       broScreen.classList.remove('active');
@@ -533,7 +513,6 @@
       errorMsg.classList.add('show');
       passInput.value = '';
       passInput.focus();
-      // little shake
       passInput.style.transform = 'translateX(-8px)';
       setTimeout(() => passInput.style.transform = 'translateX(8px)', 60);
       setTimeout(() => passInput.style.transform = 'translateX(0)', 120);
@@ -548,7 +527,6 @@
     passInput.focus();
   }
 
-  // Simple music placeholder (you can later replace with real audio)
   let playing = false;
   function toggleMusic(who) {
     const btns = document.querySelectorAll('.play-btn');
@@ -560,13 +538,11 @@
       }
     });
     playing = !playing;
-    // Later you can add: new Audio('your-song.mp3').play()
     alert(who === 'bro' 
       ? '🎵 Add your song link here later for Bro version' 
       : '🎵 Add your song link here later for Sis version');
   }
 
-  // Focus input on load
   passInput.focus();
 </script>
 </body>
